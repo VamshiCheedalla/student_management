@@ -1,28 +1,23 @@
 import mysql.connector
 from mysql.connector import Error
 
-# ─────────────────────────────────────────
 #  DATABASE CONNECTION
-# ─────────────────────────────────────────
 
 def connect():
     return mysql.connector.connect(
         host="localhost",
-        user="root",          # change to your MySQL username
-        password="Khyvam@1722",          # change to your MySQL password
+        user="root",
+        password="",          # change to your MySQL password
         database="student_db"
     )
 
-
-# ─────────────────────────────────────────
 #  SETUP: CREATE DATABASE & TABLES
-# ─────────────────────────────────────────
 
 def setup_database():
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Khyvam@1722"           # change to your MySQL password
+        password=""           # change to your MySQL password
     )
     cursor = conn.cursor()
 
@@ -53,10 +48,7 @@ def setup_database():
     conn.close()
     print("Database and tables ready.\n")
 
-
-# ─────────────────────────────────────────
 #  STUDENT OPERATIONS
-# ─────────────────────────────────────────
 
 def add_student():
     name   = input("Enter student name   : ").strip()
@@ -163,10 +155,7 @@ def delete_student():
         cursor.close()
         conn.close()
 
-
-# ─────────────────────────────────────────
 #  RESULT OPERATIONS
-# ─────────────────────────────────────────
 
 def add_result():
     student_id = input("Enter student ID : ").strip()
@@ -275,10 +264,7 @@ def view_rankings():
         cursor.close()
         conn.close()
 
-
-# ─────────────────────────────────────────
 #  HELPER
-# ─────────────────────────────────────────
 
 def get_grade(marks):
     marks = float(marks)
@@ -289,10 +275,7 @@ def get_grade(marks):
     if marks >= 50: return "D"
     return "F"
 
-
-# ─────────────────────────────────────────
 #  MENU
-# ─────────────────────────────────────────
 
 def main():
     setup_database()
